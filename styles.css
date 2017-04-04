@@ -117,3 +117,21 @@ img {
 .delete-icon:hover {
   background-image: url("assets/delete-hover.svg");
 }
+.upvote-icon {
+  width: 25px;
+  height: 25px;
+  background: url("assets/upvote.svg");
+  border: none;
+}
+.upvote-icon:hover {
+  background: url("assets/upvote-hover.svg");
+}
+.downvote-icon {
+  width: 25px;
+  height: 25px;
+  background: url("assets/downvote.svg");
+  border: none;
+}
+.downvote-icon:hover {
+  background: url(assets/downvote-hover.svg);
+}
