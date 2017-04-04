@@ -24,7 +24,7 @@ function Idea(id, title, body, quality) {
   this.id = id;
   this.title = title;
   this.body = body;
-  this.quality = quality;
+  this.quality = 'quality: swill';
 }
 
 function prependIdea(newIdea) {
@@ -53,4 +53,8 @@ function prependIdea(newIdea) {
   $('.downvote-icon').on('click', function () {
         $('.quality-text').text('quality: swill');
       });
+}
+
+function toggleSaveDisable() {
+  
 }
