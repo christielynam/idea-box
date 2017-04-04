@@ -20,7 +20,7 @@ function clearInputFields() {
 //   });
 // }
 
-function Idea(id, title, body, quality) {
+function Idea(title, body, quality, id) {
   this.id = id;
   this.title = title;
   this.body = body;
@@ -56,5 +56,5 @@ function prependIdea(newIdea) {
 }
 
 function toggleSaveDisable() {
-  
+
 }
