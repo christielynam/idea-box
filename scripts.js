@@ -1,18 +1,24 @@
-$('.save-idea').on('click', function() {
+$('.save-idea').on('click', function () {
   var $title = $('.title-storage').val();
   var $body = $('.body-storage').val();
   var $newIdea = new Idea($title, $body);
   prependIdea($newIdea);
   clearInputFields();
-})
+});
 
-function clearInputFields () {
+function clearInputFields() {
   var $title = $('.title-storage');
   var $body = $('.body-storage');
   $title.val('');
   $body.val('');
   toggleSaveDisable();
 }
+
+// function toggleSaveDisable() {
+//   $('.title-storage').on('keypress', function () {
+//     $('.save-idea').prop('disabled', false);
+//   });
+// }
 
 function Idea(id, title, body, quality) {
   this.id = id;
@@ -35,10 +41,18 @@ function prependIdea(newIdea) {
       <div class="quality-container">
         <img class="upvote-icon" src="assets/upvote.svg" alt="upvote">
         <img class="downvote-icon" src="assets/downvote.svg" alt="downvote">
-        <p class="quality-text">${$quality}</p>
+        <p class="quality-text">quality: swill</p>
       </div>
     </article>`
-  )
+  );
+
+  $('.upvote-icon').on('click', function () {
+      $('.quality-text').text('quality: plausible');
+    });
+
+  $('.downvote-icon').on('click', function () {
+        $('.quality-text').text('quality: swill');
+      });
 }
 
 function toggleSaveDisable() {

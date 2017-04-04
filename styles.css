@@ -25,9 +25,7 @@ h1 {
   width: 40%;
   font-size: 20px;
 }
-.title-storage:focus {
-  outline: 0;
-}
+
 .save-idea {
   width: 40%;
   padding: 5px;
@@ -37,22 +35,35 @@ h1 {
   border: none;
   font-size: 18px;
 }
-.save-idea:focus {
-  outline: 0;
+
+.save-idea:hover {
+  background-color: #045E55;
 }
+
+.save-idea:disabled {
+  background-color: red;
+}
+
 input {
   margin: 15px;
   padding: 5px;
   font-family: inherit;
 }
+
+input:focus {
+  outline: 2px solid rgba(0, 167, 157, 0.2);
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .search-input {
   margin-top: 20px;
 }
+
 article {
   width: 100%;
   border-bottom: 1px solid #D1D3D4;
@@ -88,7 +99,7 @@ img {
   color: #6D6E71;
 }
 .quality-container {
-  width: 30%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
 }
