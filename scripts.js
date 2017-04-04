@@ -1,7 +1,7 @@
 $('.save-idea').on('click', function () {
   var $title = $('.title-storage').val();
   var $body = $('.body-storage').val();
-  var $newIdea = new Idea($title, $body);
+  var $newIdea = new Idea('',$title, $body,'');
   prependIdea($newIdea);
   clearInputFields();
 });
@@ -28,6 +28,7 @@ function Idea(id, title, body, quality) {
 }
 
 function prependIdea(newIdea) {
+  debugger;
   var $title = newIdea.title;
   var $body = newIdea.body;
   var $quality = newIdea.quality;
@@ -35,7 +36,7 @@ function prependIdea(newIdea) {
     `<article class="idea-card">
       <div class="card-header">
         <h2>${$title}</h2>
-        <img class="delete-icon" src="assets/delete.svg" alt="delete-icon">
+        <button class="delete-icon" type="button" name="delete-button"></button>
       </div>
       <p class="body-text">${$body}</p>
       <div class="quality-container">
@@ -55,6 +56,10 @@ function prependIdea(newIdea) {
       });
 }
 
+$('.idea-container').on('click', '.delete-icon', function() {
+  $(this).parents('.idea-card').remove();
+})
+
 function toggleSaveDisable() {
-  
+
 }
