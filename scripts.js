@@ -6,6 +6,9 @@ $('.save-idea').on('click', function () {
   clearInputFields();
 });
 
+$('.title-storage').on('input', enableSave);
+$('.body-storage').on('input', enableSave);
+
 function clearInputFields() {
   var $title = $('.title-storage');
   var $body = $('.body-storage');
@@ -14,11 +17,22 @@ function clearInputFields() {
   toggleSaveDisable();
 }
 
-// function toggleSaveDisable() {
-//   $('.title-storage').on('keypress', function () {
-//     $('.save-idea').prop('disabled', false);
-//   });
-// }
+function enableSave() {
+  var $title = $('.title-storage').val();
+  var $body = $('.body-storage').val();
+  if ($title !== '' && $body !== '') {
+    toggleSaveDisable();
+  }
+}
+
+function toggleSaveDisable() {
+  var $disabled = $('.save-idea').prop('disabled');
+  if ($disabled) {
+    $('.save-idea').prop('disabled', false);
+  } else {
+    $('.save-idea').prop('disabled', true);
+  }
+}
 
 function Idea(title, body, quality, id) {
   this.id = id;
@@ -56,10 +70,6 @@ function prependIdea(newIdea) {
       });
 }
 
-$('.idea-container').on('click', '.delete-icon', function() {
+$('.idea-container').on('click', '.delete-icon', function () {
   $(this).parents('.idea-card').remove();
-})
-
-function toggleSaveDisable() {
-
-}
+});
