@@ -21,17 +21,14 @@ function enableSave() {
   var $title = $('.title-storage').val();
   var $body = $('.body-storage').val();
   if ($title !== '' && $body !== '') {
-    toggleSaveDisable();
+    toggleSaveDisable(false);
+  } else {
+    toggleSaveDisable(true);
   }
 }
 
-function toggleSaveDisable() {
-  var $disabled = $('.save-idea').prop('disabled');
-  if ($disabled) {
-    $('.save-idea').prop('disabled', false);
-  } else {
-    $('.save-idea').prop('disabled', true);
-  }
+function toggleSaveDisable(value) {
+  $('.save-idea').prop('disabled', value);
 }
 
 function Idea(title, body, quality, id) {
