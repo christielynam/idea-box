@@ -54,8 +54,15 @@ main {
   margin-top: 20px;
 }
 article {
-  width: 40%;
+  width: 100%;
   border-bottom: 1px solid #D1D3D4;
+}
+.idea-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
 }
 .card-header {
   display: flex;
