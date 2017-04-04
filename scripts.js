@@ -1,7 +1,7 @@
 $('.save-idea').on('click', function () {
   var $title = $('.title-storage').val();
   var $body = $('.body-storage').val();
-  var $newIdea = new Idea('',$title, $body,'');
+  var $newIdea = new Idea($title, $body);
   prependIdea($newIdea);
   clearInputFields();
 });
@@ -40,9 +40,9 @@ function prependIdea(newIdea) {
       </div>
       <p class="body-text">${$body}</p>
       <div class="quality-container">
-        <img class="upvote-icon" src="assets/upvote.svg" alt="upvote">
-        <img class="downvote-icon" src="assets/downvote.svg" alt="downvote">
-        <p class="quality-text">quality: swill</p>
+        <button class="upvote-icon" type="button" name="upvote-btn"></button>
+        <button class="downvote-icon" type="button" name="downvote-btn"></button>
+        <p class="quality-text">${$quality}</p>
       </div>
     </article>`
   );
