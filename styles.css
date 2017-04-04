@@ -36,6 +36,14 @@ h1 {
   font-size: 18px;
 }
 
+.save-idea:hover {
+  background-color: #045E55;
+}
+
+.save-idea:disabled {
+  background-color: red;
+}
+
 input {
   margin: 15px;
   padding: 5px;
@@ -57,12 +65,11 @@ main {
 }
 
 section {
+  width: 40%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 article {
-  width: 40%;
   border-bottom: 1px solid #D1D3D4;
 }
 .card-header {
