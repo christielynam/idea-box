@@ -108,3 +108,12 @@ img {
 .quality-text {
   margin: 15px 0;
 }
+.delete-icon {
+  width: 25px;
+  height: 25px;
+  background: url("assets/delete.svg");
+  border: none;
+}
+.delete-icon:hover {
+  background-image: url("assets/delete-hover.svg");
+}
