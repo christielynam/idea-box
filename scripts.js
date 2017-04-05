@@ -65,13 +65,21 @@ function prependIdea(newIdea) {
     </article>`
   );
 
-  $('.upvote-icon').on('click', function () {
-      $('.quality-text').text('quality: plausible');
+  $('.idea-container').on('click', '.upvote-icon', function () {
+      if ($('.quality-text').text() === 'quality: swill') {
+        $('.quality-text').text('quality: plausible');
+      } else if ($('.quality-text').text() === 'quality: plausible') {
+        $('.quality-text').text('quality: genius');
+      }
     });
 
-  $('.downvote-icon').on('click', function () {
+  $('.idea-container').on('click', '.downvote-icon', function () {
+      if ($('.quality-text').text() === 'quality: genius') {
+        $('.quality-text').text('quality: plausible');
+      } else if ($('.quality-text').text() === 'quality: plausible') {
         $('.quality-text').text('quality: swill');
-      });
+      }
+    });
 }
 
 $('.idea-container').on('click', '.delete-icon', function () {
@@ -85,5 +93,8 @@ $.each($('textarea[data-autoresize]'), function () {
         $(value).css('height', 'auto').css('height', value.scrollHeight + offset);
       };
 
-    $(this).on('keyup input', function () { resizeTextarea(this); }).removeAttr('data-autoresize');
+    $(this).on('keyup input', function () {
+      resizeTextarea(this);
+    })
+     .removeAttr('data-autoresize');
   });
