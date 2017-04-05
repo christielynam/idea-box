@@ -187,7 +187,10 @@ button:focus {
   input,
   textarea {
     height: 39px;
+  }
 
+  textarea {
+    min-height: 39px;
   }
 }
 
@@ -213,5 +216,15 @@ button:focus {
 
   .save-idea {
     font-size: 22px;
+  }
+}
+
+@media(min-width: 1100px) {
+  input,
+  textarea,
+  article,
+  .quality-container {
+    width: 650px;
+    transition: 1s;
   }
 }
