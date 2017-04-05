@@ -49,6 +49,9 @@ textarea:focus {
 textarea {
   overflow: auto;
   resize: none;
+  height: 120px;
+  min-height: 120px;
+  max-height: 250px;
 }
 
 .save-idea {
@@ -172,12 +175,6 @@ button:focus {
   outline: 0;
 }
 
-@media(max-width: 500px) {
-  textarea {
-    height: 120px;
-  }
-}
-
 @media(min-width: 600px) {
   input,
   textarea,
@@ -190,6 +187,7 @@ button:focus {
   input,
   textarea {
     height: 39px;
+
   }
 }
 
