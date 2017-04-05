@@ -1,10 +1,17 @@
 $('.save-idea').on('click', function () {
   var $title = $('.title-storage').val();
   var $body = $('.body-storage').val();
-  var $newIdea = new Idea($title, $body);
+  var $id = Date.now();
+  var $newIdea = new Idea($title, $body, $id);
   prependIdea($newIdea);
   clearInputFields();
+  storeLocally($newIdea, $id);
 });
+
+function storeLocally(Idea, id) {
+  var stringifiedIdea = JSON.stringify(Idea);
+  localStorage.setItem(id, stringifiedIdea);
+}
 
 $('.title-storage').on('input', enableSave);
 $('.body-storage').on('input', enableSave);
@@ -33,9 +40,9 @@ function toggleSaveDisable(value) {
 }
 
 function Idea(title, body, quality, id) {
-  this.id = id;
   this.title = title;
   this.body = body;
+  this.id = id;
   this.quality = 'quality: swill';
 }
 
@@ -71,12 +78,12 @@ $('.idea-container').on('click', '.delete-icon', function () {
   $(this).parents('.idea-card').remove();
 });
 
-jQuery.each(jQuery('textarea[data-autoresize]'), function () {
+$.each($('textarea[data-autoresize]'), function () {
     var offset = this.offsetHeight - this.clientHeight;
 
     var resizeTextarea = function (value) {
-        jQuery(value).css('height', 'auto').css('height', value.scrollHeight + offset);
+        $(value).css('height', 'auto').css('height', value.scrollHeight + offset);
       };
 
-    jQuery(this).on('keyup input', function () { resizeTextarea(this); }).removeAttr('data-autoresize');
+    $(this).on('keyup input', function () { resizeTextarea(this); }).removeAttr('data-autoresize');
   });
