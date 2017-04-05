@@ -41,7 +41,7 @@ h1 {
 }
 
 .save-idea:disabled {
-  background-color: red;
+  background-color: rgba(0, 168, 157, 0.4);
 }
 
 input {

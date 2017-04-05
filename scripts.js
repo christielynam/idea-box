@@ -40,7 +40,6 @@ function Idea(title, body, quality, id) {
 }
 
 function prependIdea(newIdea) {
-  debugger;
   var $title = newIdea.title;
   var $body = newIdea.body;
   var $quality = newIdea.quality;
