@@ -1,8 +1,11 @@
 var keyArray = [];
+updatedKeyArray();
 
-for (var i = 0; i < localStorage.length; i++) {
-  var key = localStorage.key(i);
-	keyArray.push(key);
+function updatedKeyArray() {
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+  	keyArray.push(key);
+  }
 }
 
 $('.save-idea').on('click', function () {
@@ -14,6 +17,7 @@ $('.save-idea').on('click', function () {
   storeLocally($newIdea, $id);
   retrieveLocally($id);
   prependIdea($newIdea);
+  updatedKeyArray();
 });
 
 function storeLocally(Idea, id) {
@@ -22,14 +26,12 @@ function storeLocally(Idea, id) {
 }
 
 function retrieveLocally() {
-  // debugger;
   var retrievedObject;
   keyArray.forEach(function(key) {
     retrievedObject = JSON.parse(localStorage.getItem(key));
     console.log(retrievedObject);
     prependIdea(retrievedObject);
   });
-
 }
 
 $('.title-storage').on('input', enableSave);
@@ -58,7 +60,7 @@ function toggleSaveDisable(value) {
   $('.save-idea').prop('disabled', value);
 }
 
-function Idea(title, body, quality, id) {
+function Idea(title, body, id) {
   this.title = title;
   this.body = body;
   this.id = id;
@@ -69,8 +71,10 @@ function prependIdea(newIdea) {
   var $title = newIdea.title;
   var $body = newIdea.body;
   var $quality = newIdea.quality;
+  var $id = newIdea.id;
   $('.idea-container').prepend(
-    `<article class="idea-card">
+    `<article class="idea-card" id=
+  ${$id}>
       <div class="card-header">
         <h2>${$title}</h2>
         <button class="delete-icon" type="button" name="delete-button"></button>
@@ -102,6 +106,8 @@ function prependIdea(newIdea) {
 }
 
 $('.idea-container').on('click', '.delete-icon', function () {
+  var ideaId = $(this).closest('.idea-card').attr('id');
+  localStorage.removeItem(ideaId);
   $(this).parents('.idea-card').remove();
 });
 
@@ -113,6 +119,4 @@ $.each($('textarea[data-autoresize]'), function () {
     $(this).on('input', function () {
       resizeTextarea(this);
     });
-
-    //  .removeAttr('data-autoresize');
   });
