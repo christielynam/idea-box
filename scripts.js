@@ -15,6 +15,7 @@ function clearInputFields() {
   $title.val('');
   $body.val('');
   toggleSaveDisable();
+  enableSave();
 }
 
 function enableSave() {
@@ -39,7 +40,6 @@ function Idea(title, body, quality, id) {
 }
 
 function prependIdea(newIdea) {
-  debugger;
   var $title = newIdea.title;
   var $body = newIdea.body;
   var $quality = newIdea.quality;
@@ -70,3 +70,13 @@ function prependIdea(newIdea) {
 $('.idea-container').on('click', '.delete-icon', function () {
   $(this).parents('.idea-card').remove();
 });
+
+jQuery.each(jQuery('textarea[data-autoresize]'), function () {
+    var offset = this.offsetHeight - this.clientHeight;
+
+    var resizeTextarea = function (value) {
+        jQuery(value).css('height', 'auto').css('height', value.scrollHeight + offset);
+      };
+
+    jQuery(this).on('keyup input', function () { resizeTextarea(this); }).removeAttr('data-autoresize');
+  });
