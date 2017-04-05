@@ -15,6 +15,7 @@ function clearInputFields() {
   $title.val('');
   $body.val('');
   toggleSaveDisable();
+  enableSave();
 }
 
 function enableSave() {
