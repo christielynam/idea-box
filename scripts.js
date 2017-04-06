@@ -92,10 +92,6 @@ function prependIdea(newIdea) {
   );
 }
 
-$('h2').on('input', function () {
-  console.log(this.text);
-});
-
 $('.idea-container').on('click', '.upvote-icon', function () {
   var $qualityElement = $(this).parent().find('.quality-text');
   if ($qualityElement.text() === 'quality: swill') {
