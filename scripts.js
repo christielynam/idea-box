@@ -79,10 +79,10 @@ function prependIdea(newIdea) {
     `<article class="idea-card" id=
   ${$id}>
       <div class="card-header">
-        <h2>${$title}</h2>
+        <h2 contenteditable="true">${$title}</h2>
         <button class="delete-icon" type="button" name="delete-button"></button>
       </div>
-      <p class="body-text">${$body}</p>
+      <p class="body-text" contenteditable="true">${$body}</p>
       <div class="quality-container">
         <button class="upvote-icon" type="button" name="upvote-btn"></button>
         <button class="downvote-icon" type="button" name="downvote-btn"></button>
