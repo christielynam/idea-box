@@ -1,14 +1,21 @@
 var keyArray = [];
+
 updatedKeyArray();
+onPageLoad();
 
 function updatedKeyArray() {
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
-  	keyArray.push(key);
+    keyArray.push(key);
   }
 }
 
+function onPageLoad() {
+  retrieveLocally();
+}
+
 $('.save-idea').on('click', function () {
+  debugger;
   var $title = $('.title-storage').val();
   var $body = $('.body-storage').val();
   var $id = Date.now();
@@ -17,7 +24,7 @@ $('.save-idea').on('click', function () {
   storeLocally($newIdea, $id);
   retrieveLocally($id);
   prependIdea($newIdea);
-  updatedKeyArray();
+  // updatedKeyArray();
 });
 
 function storeLocally(Idea, id) {
@@ -27,7 +34,7 @@ function storeLocally(Idea, id) {
 
 function retrieveLocally() {
   var retrievedObject;
-  keyArray.forEach(function(key) {
+  keyArray.forEach(function (key) {
     retrievedObject = JSON.parse(localStorage.getItem(key));
     console.log(retrievedObject);
     prependIdea(retrievedObject);
@@ -108,7 +115,7 @@ function prependIdea(newIdea) {
 $('.idea-container').on('click', '.delete-icon', function () {
   var ideaId = $(this).closest('.idea-card').attr('id');
   localStorage.removeItem(ideaId);
-  $(this).parents('.idea-card').remove();
+  $(this).closest('.idea-card').remove();
 });
 
 $.each($('textarea[data-autoresize]'), function () {
@@ -119,4 +126,8 @@ $.each($('textarea[data-autoresize]'), function () {
     $(this).on('input', function () {
       resizeTextarea(this);
     });
+
+    $(this).on('focusout'), function () {
+      resizeTextarea(this);
+    };
   });
