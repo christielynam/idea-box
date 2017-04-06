@@ -15,16 +15,13 @@ function onPageLoad() {
 }
 
 $('.save-idea').on('click', function () {
-  debugger;
   var $title = $('.title-storage').val();
   var $body = $('.body-storage').val();
   var $id = Date.now();
   var $newIdea = new Idea($title, $body, $id);
   clearInputFields();
   storeLocally($newIdea, $id);
-  retrieveLocally($id);
   prependIdea($newIdea);
-  // updatedKeyArray();
 });
 
 function storeLocally(Idea, id) {
@@ -36,7 +33,6 @@ function retrieveLocally() {
   var retrievedObject;
   keyArray.forEach(function (key) {
     retrievedObject = JSON.parse(localStorage.getItem(key));
-    console.log(retrievedObject);
     prependIdea(retrievedObject);
   });
 }
@@ -94,23 +90,25 @@ function prependIdea(newIdea) {
       </div>
     </article>`
   );
-
-  $('.idea-container').on('click', '.upvote-icon', function () {
-      if ($('.quality-text').text() === 'quality: swill') {
-        $('.quality-text').text('quality: plausible');
-      } else if ($('.quality-text').text() === 'quality: plausible') {
-        $('.quality-text').text('quality: genius');
-      }
-    });
-
-  $('.idea-container').on('click', '.downvote-icon', function () {
-      if ($('.quality-text').text() === 'quality: genius') {
-        $('.quality-text').text('quality: plausible');
-      } else if ($('.quality-text').text() === 'quality: plausible') {
-        $('.quality-text').text('quality: swill');
-      }
-    });
 }
+
+$('.idea-container').on('click', '.upvote-icon', function () {
+  var $qualityElement = $(this).parent().find('.quality-text');
+  if ($qualityElement.text() === 'quality: swill') {
+    $qualityElement.text('quality: plausible');
+  } else if ($qualityElement.text() === 'quality: plausible') {
+    $qualityElement.text('quality: genius');
+  }
+});
+
+$('.idea-container').on('click', '.downvote-icon', function () {
+  var $qualityElement = $(this).parent().find('.quality-text');
+  if ($qualityElement.text() === 'quality: genius') {
+    $qualityElement.text('quality: plausible');
+  } else if ($qualityElement.text() === 'quality: plausible') {
+    $qualityElement.text('quality: swill');
+  }
+});
 
 $('.idea-container').on('click', '.delete-icon', function () {
   var ideaId = $(this).closest('.idea-card').attr('id');
@@ -126,8 +124,4 @@ $.each($('textarea[data-autoresize]'), function () {
     $(this).on('input', function () {
       resizeTextarea(this);
     });
-
-    $(this).on('focusout'), function () {
-      resizeTextarea(this);
-    };
   });
