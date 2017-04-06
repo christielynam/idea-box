@@ -11,13 +11,13 @@
   </head>
   <body>
     <header>
-      <h1>idea<span class="other-color">box</span></h1>
-      <input class="title-storage" style="color: #6D6E71;" type="text" name="title" placeholder="Title">
-      <textarea data-autoresize class="body-storage" style="color: #6D6E71;" rows="1" name="body" placeholder="Body"></textarea>
+      <h1 role="banner">idea<span class="other-color">box</span></h1>
+      <input class="title-storage" style="color: #6D6E71;" type="text" name="title" placeholder="Title" aria-required="true">
+      <textarea class="body-storage" style="color: #6D6E71;" rows="1" name="body" placeholder="Body" aria-required="true"></textarea>
       <input class="save-idea" type="submit" name="save" value="save" disabled>
     </header>
-    <main>
-      <input class="search-input" style="color: #6D6E71;" type="text" name="search-box" value="" placeholder="Search">
+    <main role="main">
+      <input class="search-input" role="search" style="color: #6D6E71;" type="text" name="search-box" placeholder="Search">
       <section class="idea-container">
       </section>
     </main>
