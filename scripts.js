@@ -1,17 +1,13 @@
 var keyArray = [];
 
 updatedKeyArray();
-onPageLoad();
+retrieveLocally();
 
 function updatedKeyArray() {
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     keyArray.push(key);
   }
-}
-
-function onPageLoad() {
-  retrieveLocally();
 }
 
 $('.save-idea').on('click', function () {
@@ -76,8 +72,7 @@ function prependIdea(newIdea) {
   var $quality = newIdea.quality;
   var $id = newIdea.id;
   $('.idea-container').prepend(
-    `<article class="idea-card" id=
-  ${$id}>
+    `<article class="idea-card" id=${$id}>
       <div class="card-header">
         <h2 contenteditable="true">${$title}</h2>
         <button class="delete-icon" type="button" name="delete-button"></button>
